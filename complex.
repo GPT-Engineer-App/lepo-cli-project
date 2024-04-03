@@ -1,0 +1,16 @@
+#!/usr/bin/env node
+
+const { program } = require("commander");
+const { execSync } = require("child_process");
+
+program
+  .command("create <project-name>")
+  .description("Create a new lepo.js project")
+  .action((projectName) => {
+    console.log(`Creating a new lepo.js project: ${projectName}`);
+    // Here you would add the logic to generate the project files
+    execSync(`git clone https://github.com/lepojs/template-project ${projectName}`);
+    console.log("Project created successfully!");
+  });
+
+program.parse(process.argv);
